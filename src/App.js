@@ -252,7 +252,7 @@ function App() {
 
 
     document.addEventListener('keydown', function(event) {
-        const messageElement = document.getElementById('message');
+
         const inputBox = document.getElementById('textInput');
         if (document.activeElement === inputBox) {
             return; // テキストボックスがフォーカスされている場合、何もしない
