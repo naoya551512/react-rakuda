@@ -219,7 +219,7 @@ function App() {
     });
 
     document.getElementById('generateQR').addEventListener('click', function() {
-        const url = `http://localhost:8000/view_matsumoto.html?rooms=${encodeURIComponent(JSON.stringify(rooms))}`;
+        const url = `https://brilliant-elf-951050.netlify.app/?rooms=${encodeURIComponent(JSON.stringify(rooms))}`;
         $('#generatedLink').html(`<a href="${url}" target="_blank">${url}</a>`);
         $('#editdata').val(JSON.stringify(rooms));
         alert('QRコードが生成されました');
