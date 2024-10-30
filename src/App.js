@@ -16,6 +16,10 @@ function App() {
     let offsetY = 0;
     let isDragging = false;
 
+    // 例: offsetXとoffsetYを使用する
+    console.log(offsetX, offsetY);
+
+
     function drawRoom(room) {
         ctx.fillStyle = room.color;
         ctx.strokeStyle = room.color;
