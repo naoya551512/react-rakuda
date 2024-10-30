@@ -1,0 +1,42 @@
+
+   
+            .rampart-one-regular {
+            font-family: "Rampart One", sans-serif;
+            font-size: 68px;
+            font-weight: 550;
+            font-style: normal;
+            color: coral;
+        }
+        .little {
+            font-family: "Rampart One", sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            font-style: normal;
+            color: coral;
+        }
+
+
+        body { font-family: Arial, sans-serif; }
+        canvas { border: 1px solid black; 
+            border-radius: 30px;}
+        div#content {
+            display: flex;
+            width: 1880px;
+            overflow: hidden;
+        }
+
+
+        div#main {
+            width: 940px;
+            float: left;
+        }
+
+        nav {
+            width: 940px;
+            float: right;
+            text-align: center; /* 中央揃え */
+        }
+        button { margin: 5px; }
+        #qrCode { margin-top: 20px; }
+        #generatedLink { margin-top: 20px; }
+        #editdata { margin-top: 20px; white-space: pre-wrap; }

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>間取り表示</title>
+</head>
+<body>
+    <canvas id="floorPlan" width="940" height="900"></canvas>
+    <script>
+        const canvas = document.getElementById('floorPlan');
+        const ctx = canvas.getContext('2d');
+        const urlParams = new URLSearchParams(window.location.search);
+        const rooms = JSON.parse(decodeURIComponent(urlParams.get('rooms')));
+
+        function redrawRooms() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            rooms.forEach(drawRoom);
+        }
+        // 部屋を描画する関数
+        function drawRoom(room) {
+            ctx.fillStyle = room.color;
+            ctx.strokeStyle = room.color;
+            ctx.lineWidth = 2;
+
+            ctx.save();
+            ctx.translate(room.x + (room.width || 0) / 2, room.y + (room.height || 0) / 2);
+            ctx.rotate(room.rotation || 0);
+            ctx.translate(-(room.x + (room.width || 0) / 2), -(room.y + (room.height || 0) / 2));
+
+            if (room.type === 'square') {
+                ctx.fillRect(room.x, room.y, room.width, room.height);
+            } else if (room.type === 'line') {
+                ctx.beginPath();
+                ctx.moveTo(room.x, room.y);
+                ctx.lineTo(room.endX, room.endY);
+                ctx.stroke();
+            } else if (room.type === 'text') {
+                ctx.font = '20px Arial';
+                ctx.fillText(room.text, room.x, room.y);
+            } else if (room.type === 'Vertical_text') { // 縦書きテキストの描画
+                ctx.font = '20px Arial';
+                for (let i = 0; i < room.text.length; i++) {
+                    ctx.fillText(room.text[i], room.x, room.y + i * 22); // 縦方向に文字を配置
+                }
+            }
+            ctx.restore();
+        }
+        redrawRooms();
+    </script>
+</body>
+</html>

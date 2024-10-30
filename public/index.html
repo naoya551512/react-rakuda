@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+
+  
+    <title>間取り作成・編集ツール</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Noto+Sans+JP:wght@100..900&family=Poppins:wght@400;500;700&family=Rampart+One&display=swap" rel="stylesheet">
+
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+  
+    <div id = "content"> <!--2分割用の全体div-->
+        <div id = "main"><canvas id="floorPlan" width="940" height="900"></canvas></div> <!--半分のcanvas部分-->
+        <nav>
+            <div>
+                    <div>
+                        <span class="rampart-one-regular">ラクダ</span>
+                        <span class ="little">[店舗マップ生成サイト]</span>
+                        <img src="image/rakuda.png" alt="" width="75">
+                    </div>
+                <label>形状:
+                    <select id="shape">
+                        <option value="square">四角形</option>
+                        <option value="line">線</option>
+                        <option value="text">テキスト</option>
+                        <option value="Vertical_text">縦書きテキスト</option>
+                    </select>
+                </label>
+                <label>テキスト: <input type="text" id="textInput" placeholder="テキストを入力"></label>
+                <label>色: <input type="color" id="roomColor" value="#ADD8E6"></label>
+                <button id="generateQR">QRコード生成</button>
+                <button id="editbutton">編集モードに切り替え</button>
+            </div>
+
+            <div>
+                <button id="sizedown">小さく</button>
+                <button id="sizeup">大きく</button>
+                <button id="rotate">傾ける</button>
+                <button id="deleteRoom">削除</button>
+                <button id="resizebutton">サイズ変更モードに切り替え</button>
+            </div>
+
+            <h2>編集データ</h2>
+            <textarea id="editdata" readonly></textarea>
+            <textarea id="roomdata" rows="4" cols="50" placeholder="編集コードを入力..."></textarea>
+            <button id="applyEditData">適用</button>
+            <button id="clearButton">クリア</button>
+            <button id="pasteButton">ペースト</button>
+            <button id="copyButton">コピー</button>
+
+            <div id="qrCode"></div>
+            <div id="generatedLink"></div>
+  </body>
+</html>
